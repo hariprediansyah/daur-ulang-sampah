@@ -1,66 +1,68 @@
+<!-- 1. Homepage Pengomposan -hari
+2. Panduan Pengomposan -bunga
+3.1 Metode Pengomposan Komposter Takakura -said
+3.2 Metode Pengomposan Lubang Biopori -komarudin
+3.3 Metode Pengomposan Vermikompos (Kompos Cacing) -arya
+4. Manfaat Kompos -ilhan septyan mahendra
+5. About -dedi -->
+
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Tentang Kami</title>
-    <link rel="stylesheet" href="Style.css"> </head>
-<body>
-    </section>
-    <div class="team">
-        <h2 class="text-center">Team</h2>
-        <div class="nama">
-            <section>
-                <div class="">
-                    <img src="image/diversity_3_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Gambar di tengah">
-                </div>
-            </section>
-            <section>
-                <p>-RD Said Muhammad Iskandar</p>
-            </section>
-            <section>
-                <p>-Hari</p>
-            </section>
-            <section>
-                <p>-Aryananda Valdie Maharisi</p>
-            </section>
-                <p>-Dedi Rismawan</p>
-            </section>
-            <section>
-                <p>-Ahmad Komarudin</p>
-            </section>
-            <section>
-                <p>-Bunga</p>
-            </section>
-            <section>
-                <p>-Ilhan Septian</p>
-            </section>
-    </section class="tentang">
-    <header>
-        <h1>Tentang Kami</h1>
-    </header>
-    <main>
-        <p> Pengelolaan sampah kompos merupakan langkah krusial dalam menjaga keberlanjutan lingkungan. Dengan mengolah sampah organik menjadi kompos, kita tidak hanya mengurangi volume sampah yang berakhir di tempat pembuangan akhir, tetapi juga menghasilkan pupuk organik berkualitas tinggi untuk meningkatkan produktivitas pertanian. Selain itu, proses pembuatan kompos juga dapat mengurangi emisi gas metana yang berbahaya bagi lingkungan.</p>
-        <section class="visi">
-            <h2>Visi</h2>
-            <p>Terwujudnya lingkungan yang bersih, sehat, dan berkelanjutan melalui pengelolaan sampah organik secara optimal menjadi kompos berkualitas.</p>
-        </section>
-        <section>
-            <h2>Misi</h2>
-            <p>Meningkatkan kesadaran masyarakat akan pentingnya pengelolaan sampah organik.
-                Memfasilitasi masyarakat dalam mengolah sampah organik menjadi kompos.
-                Memanfaatkan kompos sebagai pupuk organik untuk meningkatkan produktivitas pertanian.
-                Mengembangkan sistem pengelolaan sampah organik yang terintegrasi dan berkelanjutan.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 kelompok garang</p>
-        <p> </p>
-      
-      <style>
-        footer {
-          text-align: center;
-          padding: ;
-          background-color: #ebeaea;
-        }
-      </style>
-</body>
-    </html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daur Ulang Sampah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/index.css" />
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" data-file="home_hari.html">Home</a></li>
+        <li class="center"><a href="#" data-file="PanduanPengomposan_Bunga.html">Panduan</a></li>
+        <li class="center dropdown">
+          <a href="#">Metode <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-content">
+            <li><a href="#" data-file="LubangBiopori_AhmadK.html">Komposter Takakura</a></li>
+            <li><a href="#" data-file="LubangBiopori_AhmadK.html">Lubang Biopori</a></li>
+            <li><a href="#" data-file="Vermikompos_Arya.html">Vermikompos</a></li>
+          </ul>
+        </li>
+        <li class="center" style="margin-right: 50px"><a href="#">Manfaat</a></li>
+        <li class="forward"><a href="#" data-file="About_Dedi.html">About</a></li>
+      </ul>
+    </nav>
+    <div style="padding: 140px 60px 0px 60px">
+      <div class="card-content"></div>
+    </div>
+  </body>
+  <script>
+    // Select all submenu items with data-file attribute
+    // const submenuLinks = document.querySelectorAll('.dropdown-content a')
+    const menuLinks = document.querySelectorAll('.nav-links a')
+
+    // Loop through each link and add a click event listener
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault() // Prevent default link behavior
+
+        // Get the HTML file path from data-file attribute
+        const filePath = link.getAttribute('data-file')
+
+        // Fetch the HTML content from the specified file
+        fetch(filePath)
+          .then((response) => {
+            if (!response.ok) throw new Error('Failed to load content')
+            return response.text()
+          })
+          .then((htmlContent) => {
+            // Insert the HTML content into the .card-content element
+            document.querySelector('.card-content').innerHTML = htmlContent
+          })
+          .catch((error) => {
+            console.error('Error loading content:', error)
+          })
+      })
+    })
+  </script>
+</html>
