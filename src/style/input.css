@@ -1,4 +1,7 @@
 /* Google Fonts Import Link */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -15,7 +18,7 @@
 
 body {
   height: 100vh;
-  background: #c1f7f5;
+  background: #f3fff3;
 }
 
 .navbar-wrapper {
@@ -141,6 +144,13 @@ nav {
   padding: 6px 0;
   text-decoration: none;
 }
+
+.nav-links li a.active:before {
+  width: 100%; /* Garis bawah penuh */
+  left: 0;
+  transform: translateX(0); /* Reset transformasi */
+}
+
 .nav-links li a:before {
   content: '';
   position: absolute;
@@ -148,7 +158,7 @@ nav {
   left: 0;
   height: 3px;
   width: 0%;
-  background: #34efdf;
+  background: #3aef34;
   border-radius: 12px;
   transition: all 0.4s ease;
 }
@@ -189,8 +199,8 @@ nav {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   z-index: 1;
   min-width: 230px;
-  transform: translateY(-10px); /* Mulai sedikit lebih tinggi untuk efek slide */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Durasi animasi */
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown:hover .dropdown-content {
@@ -214,13 +224,18 @@ nav {
 }
 
 .dropdown-content li a:hover {
-  background: #e0f7fa;
+  background: #e0fae2;
   border-radius: 8px;
 }
 
-.card-content {
+.dropdown-content li a.active-sub {
+  background: #e0fae2;
+  border-radius: 8px;
+}
+
+/* .card-content {
   background: #fff;
   padding: 20px 15px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
+} */

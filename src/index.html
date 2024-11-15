@@ -1,0 +1,103 @@
+<!-- 1. Homepage Pengomposan -hari
+2. Panduan Pengomposan -bunga
+3.1 Metode Pengomposan Komposter Takakura -said
+3.2 Metode Pengomposan Lubang Biopori -komarudin
+3.3 Metode Pengomposan Vermikompos (Kompos Cacing) -arya
+4. Manfaat Kompos -ilhan septyan mahendra
+5. About -dedi -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kompos dan Pengomposan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./style/output.css" />
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a data-type="menu" href="#" data-file="home_hari.html">Home</a></li>
+        <li class="center"><a data-type="menu" href="#" data-file="PanduanPengomposan_Bunga.html">Panduan</a></li>
+        <li class="center dropdown">
+          <a data-type="none" href="#">Metode <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-content">
+            <li><a href="#" data-type="sub" data-file="Komposter_Takakura_Said.html">Komposter Takakura</a></li>
+            <li><a href="#" data-type="sub" data-file="LubangBiopori_AhmadK.html">Lubang Biopori</a></li>
+            <li><a href="#" data-type="sub" data-file="Vermikompos_Arya.html">Vermikompos</a></li>
+          </ul>
+        </li>
+        <li class="center" style="margin-right: 50px"><a data-type="menu" href="Manfaat_Ilhan.html">Manfaat</a></li>
+        <li class="forward"><a data-type="menu" href="#" data-file="About_Dedi.html">About</a></li>
+      </ul>
+    </nav>
+
+    <div style="padding: 140px 60px 0px 60px">
+      <div class="card-content"></div>
+    </div>
+    <footer class="bg-green-600 text-white py-4 text-center mt-12">
+      <p>&copy; 2024 Kompos dan pengomposan</p>
+    </footer>
+  </body>
+  <script>
+    const cardContent = document.querySelector('.card-content')
+    fetch('home_hari.html')
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to load content')
+        return response.text()
+      })
+      .then((htmlContent) => {
+        cardContent.innerHTML = htmlContent
+      })
+      .catch((error) => {
+        console.error('Error loading content:', error)
+      })
+
+    const menuLinks = document.querySelectorAll('.nav-links a')
+    const dropdownLinks = document.querySelector('.dropdown a')
+    const dropdownContent = document.querySelectorAll('.dropdown-content a')
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault()
+
+        const filePath = link.getAttribute('data-file')
+
+        if (link.getAttribute('data-type') != 'none') {
+          fetch(filePath)
+            .then((response) => {
+              if (!response.ok) throw new Error('Failed to load content')
+              return response.text()
+            })
+            .then((htmlContent) => {
+              document.querySelector('.card-content').innerHTML = htmlContent
+            })
+            .catch((error) => {
+              console.error('Error loading content:', error)
+            })
+        }
+
+        menuLinks.forEach((link) => {
+          link.classList.remove('active')
+          link.classList.remove('active-sub')
+        })
+        if (link.getAttribute('data-type') === 'sub') {
+          dropdownContent.forEach((link) => link.classList.remove('active'))
+          dropdownContent.forEach((link) => link.classList.remove('active-sub'))
+          dropdownLinks.classList.add('active')
+          link.classList.add('active-sub')
+        }
+        link.classList.add('active')
+      })
+    })
+  </script>
+</html>
