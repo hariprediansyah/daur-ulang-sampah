@@ -14,6 +14,7 @@
     <title>Kompos dan Pengomposan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./style/output.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
     <div class="navbar-wrapper">
@@ -36,7 +37,9 @@
             <li><a href="#" data-type="sub" data-file="Vermikompos_Arya.html">Vermikompos</a></li>
           </ul>
         </li>
-        <li class="center" style="margin-right: 50px"><a data-type="menu" href="Manfaat_Ilhan.html">Manfaat</a></li>
+        <li class="center" style="margin-right: 50px">
+          <a data-type="menu" data-file="Manfaat_Ilhan.html" href="#">Manfaat</a>
+        </li>
         <li class="forward"><a data-type="menu" href="#" data-file="About_Dedi.html">About</a></li>
       </ul>
     </nav>
@@ -65,6 +68,8 @@
     const menuLinks = document.querySelectorAll('.nav-links a')
     const dropdownLinks = document.querySelector('.dropdown a')
     const dropdownContent = document.querySelectorAll('.dropdown-content a')
+
+    menuLinks[0].classList.add('active')
 
     menuLinks.forEach((link) => {
       link.addEventListener('click', (event) => {
